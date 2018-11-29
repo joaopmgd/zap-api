@@ -2,6 +2,7 @@ package app
 
 import (
 	"net/http"
+	"os"
 
 	"github.com/gorilla/mux"
 	log "github.com/sirupsen/logrus"
@@ -15,11 +16,18 @@ type App struct {
 	Router *mux.Router
 }
 
-// App initialize with predefined configuration
+// App initialize with predefined configuration and check for environment variables
 func (a *App) Initialize(config *config.Config) {
 	a.Config = config
 	a.Config.Logger.Formatter = &log.TextFormatter{
 		FullTimestamp: true,
+	}
+	if os.Getenv("ZAP_PROPERTIES_ENDPOINT") == "" || os.Getenv("HOST") == "" {
+		a.Config.Logger.WithFields(log.Fields{
+			"ZAP_PROPERTIES_ENDPOINT": os.Getenv("ZAP_PROPERTIES_ENDPOINT"),
+			"HOST":                    os.Getenv("HOST"),
+		}).Error("Environment variables must be set.")
+		os.Exit(0)
 	}
 	a.Config.Logger.Info("Initializing...")
 	a.Router = mux.NewRouter()
