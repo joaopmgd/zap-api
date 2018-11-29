@@ -19,6 +19,7 @@ func GetAllProperties(config *config.Config, w http.ResponseWriter, r *http.Requ
 	properties := &[]model.Property{}
 	if _, ok := datasources[source]; !ok {
 		config.Logger.Error("No property found for", source)
+		respondError(w, http.StatusNotFound, "Source not accepted.")
 		return
 	}
 	propertiesCachedString, found := config.Cache.Get(source)
@@ -48,6 +49,7 @@ func getPropertiesOr404(url string, w http.ResponseWriter, r *http.Request) *[]m
 	return &properties
 }
 
+// the Timeout is 100s because it can take too long to make the first request without cache
 func requestProperties(target interface{}, url string) error {
 	var myClient = &http.Client{Timeout: 100 * time.Second}
 	r, err := myClient.Get(url)

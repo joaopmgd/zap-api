@@ -18,13 +18,11 @@ make run
 Building and Creating a Container:
 ```
 make docker-build
-docker build -t zap .
 ```
 
 Running the Container locally:
 ```
 make docker-run
-docker run --name zap -p 8080:8080 -d zap
 ```
 
 

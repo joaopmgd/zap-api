@@ -4,8 +4,6 @@ FROM golang:latest AS builder
 ADD . /go/src/gitlab.com/api
 WORKDIR /go/src/gitlab.com/api
 
-ENV ZAP_PROPERTIES_ENDPOINT "http://grupozap-code-challenge.s3-website-us-east-1.amazonaws.com/sources/source-2.json"
-
 # Testing the API
 RUN go test
 
