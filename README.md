@@ -6,6 +6,8 @@ This API will recover the properties for ZAP ou VivaReal
 
 This project was built in Go version go1.11.1, so it must be a version similar with that.
 
+NOTE: dependency management was done using Dep (dependency management tool for Go)
+
 ### Running
 
 To run this project just enter the command bellow:
