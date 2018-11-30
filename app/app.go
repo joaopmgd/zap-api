@@ -6,8 +6,8 @@ import (
 
 	"github.com/gorilla/mux"
 	log "github.com/sirupsen/logrus"
-	"gitlab.com/api/app/handler"
-	"gitlab.com/api/config"
+	"gitlab.com/zap-api/app/handler"
+	"gitlab.com/zap-api/config"
 )
 
 // App has router

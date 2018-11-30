@@ -1,16 +1,14 @@
 package model
 
-import "time"
-
 // Property data model
 type Property struct {
 	UsableAreas   int          `json:"usableAreas"`
 	ListingType   string       `json:"listingType"`
-	CreatedAt     time.Time    `json:"createdAt"`
+	CreatedAt     string       `json:"createdAt"`
 	ListingStatus string       `json:"listingStatus"`
 	Id            string       `json:"id"`
 	ParkingSpaces int          `json:"parkingSpaces"`
-	UpdatedAt     time.Time    `json:"updatedAt"`
+	UpdatedAt     string       `json:"updatedAt"`
 	Owner         bool         `json:"owner"`
 	Images        []string     `json:"images"`
 	Address       Address      `json:"address"`
@@ -42,4 +40,25 @@ type PricingInfos struct {
 	MonthlyCondoFee  string `json:"monthlyCondoFee"`
 	Period           string `json:"period"`
 	RentalTotalPrice string `json:"rentalTotalPrice"`
+}
+
+type ListPropertyResponse struct {
+	Properties           []Property `json:"listings"`
+	PageNumber           int        `json:"pageNumber"`
+	PageSize             int        `json:"pageSize"`
+	PropertiesTotalCount int        `json:"propertiestotalCount"`
+}
+
+type BoundingBox struct {
+	Minlon float64
+	Minlat float64
+	Maxlon float64
+	Maxlat float64
+}
+
+var VivaRealBoundBox = BoundingBox{
+	Minlon: -46.693419,
+	Minlat: -23.568704,
+	Maxlon: -46.641146,
+	Maxlat: -23.546686,
 }

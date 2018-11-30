@@ -7,8 +7,8 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"gitlab.com/api/app"
-	"gitlab.com/api/config"
+	"gitlab.com/zap-api/app"
+	"gitlab.com/zap-api/config"
 )
 
 var a app.App

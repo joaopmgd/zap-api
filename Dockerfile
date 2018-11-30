@@ -1,8 +1,8 @@
 # Based on the latest golang image from Docker
 FROM golang:latest AS builder
 
-ADD . /go/src/gitlab.com/api
-WORKDIR /go/src/gitlab.com/api
+ADD . /go/src/gitlab.com/zap-api
+WORKDIR /go/src/gitlab.com/zap-api
 
 # Testing the API
 RUN go test

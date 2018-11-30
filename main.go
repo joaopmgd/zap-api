@@ -3,8 +3,8 @@ package main
 import (
 	"os"
 
-	"gitlab.com/api/app"
-	"gitlab.com/api/config"
+	"gitlab.com/zap-api/app"
+	"gitlab.com/zap-api/config"
 )
 
 func main() {
